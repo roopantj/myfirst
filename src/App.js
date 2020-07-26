@@ -66,10 +66,15 @@ render(){
       )
       style.backgroundColor='red'; 
     }
+    let style1=[]
+    if(this.state.persons.length<=2)
+     style1.push('red')
+    if(this.state.persons.length<=1)
+     style1.push('bold')
   return(
     <div className="App">
       <h1>Hi, I am React App</h1>
-      <p>This is really working!</p>
+      <p className={style1.join(' ')}>This is really working!</p>
       <button 
       style={style}
       onClick={this.togglePersonHandler}>Toggle Name</button>
