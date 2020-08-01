@@ -14,11 +14,14 @@ const StyleDiv =styled.div`
   
 `;
 const person = props => {
-   return(
+  const rnd = Math.random();
+  if(rnd>0.7)
+   throw new Error('Something went r8') 
+  return(
       <StyleDiv>
           <p onClick={props.click}>I am {props.name} and I am {props.age}</p>
           <p>{props.children}</p>
-         
+          
             <input  type="text" onChange={props.changed} placeholder="Type Here" />
           
             </StyleDiv>
