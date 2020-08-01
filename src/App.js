@@ -63,11 +63,13 @@ render(){
       <div>
        {
        this.state.persons.map((person,index)=>{
-       return <ErrorBoundary key={person.id} ><Person 
+       return <ErrorBoundary key={person.id} >
+      <Person 
        click={()=>this.deletePersonHandler(index)}
        name={person.name} 
        age={person.age}
-       changed={(event)=> this.changeNameHandler(event,person.id) } /></ErrorBoundary>
+       changed={(event)=> this.changeNameHandler(event,person.id) } />
+       </ErrorBoundary>
        })
        }
       </div>

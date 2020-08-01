@@ -7,8 +7,10 @@ class ErrorBoundary extends React.Component {
     componentDidCatch = (error,info) => {
         this.setState({showError: true, errorMsg: error})
     }
+    
     render() {
-        if(this.state.showError)
+      console.log(this.state.showError)
+      if(this.state.showError)
           return <h1>{this.state.errorMsg}</h1>
         else
           return this.props.children
