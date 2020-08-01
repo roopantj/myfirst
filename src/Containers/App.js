@@ -1,5 +1,6 @@
 import React from 'react';
-import Person from './Person';
+import Persons from '../Components/Persons/Persons';
+import Cockpit from '../Components/cockpit/Cockpit';
 import './App.css';
 import './Button.css';
 
@@ -49,38 +50,23 @@ class App extends React.Component {
     let persons=null;
     if(this.state.showPersons){
       persons=(
-      <div>
-       {
-       this.state.persons.map((person,index)=>{
-       return <Person 
-       click={()=>this.deletePersonHandler(index)}
-       name={person.name} 
-       age={person.age}
-       key={person.id}
-       changed={(event)=> this.changeNameHandler(event,person.id) } />
-       })
-       }
-      </div>
+      <Persons 
+      persons={this.state.persons} 
+      clicked={this.deletePersonHandler}
+      changed={this.changeNameHandler}/>
       )
    }
    
-   let style1=[]
-    if(this.state.persons.length<=2)
-     style1.push('red')
-    if(this.state.persons.length<=1)
-     style1.push('bold')
-   
-     return(
-       <div className="App">
-         <h1>Hi, I am React App</h1>
-         <p className={style1.join(' ')}>This is really working!</p>
-         <button 
-           className={this.state.stylesheet}
-           onClick={this.togglePersonHandler}>Toggle Name</button>
-         {persons}
-       </div>
-     );
-   }
+    return(
+      <div>
+       <Cockpit 
+       persons={this.state.persons}
+       stylesheet={this.state.stylesheet}
+       toggle={this.togglePersonHandler}/> 
+       {persons}
+      </div>
+    );
+  }
 }
 
 
